@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 
 @Entity
@@ -18,23 +19,22 @@ public class Student {
             generator = "student_sequence")
     private Long id;
     private String name;
+    @Transient
     private Integer age;
     private LocalDate dob;
     private String email;
 
     public Student() {}
 
-    public Student(String name, Integer age, LocalDate dob, String email) {
+    public Student(String name, LocalDate dob, String email) {
         this.name = name;
-        this.age = age;
         this.dob = dob;
         this.email = email;
     }
 
-    public Student(Long id, String name, Integer age, LocalDate dob, String email) {
+    public Student(Long id, String name, LocalDate dob, String email) {
         this.id = id;
         this.name = name;
-        this.age = age;
         this.dob = dob;
         this.email = email;
     }
@@ -56,7 +56,7 @@ public class Student {
     }
 
     public Integer getAge() {
-        return age;
+        return Period.between(this.dob, LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {

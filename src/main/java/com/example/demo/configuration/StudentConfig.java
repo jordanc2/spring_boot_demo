@@ -9,8 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.time.LocalDate;
 import java.util.List;
 
-import static java.time.Month.DECEMBER;
-import static java.time.Month.JULY;
+import static java.time.Month.*;
 
 @Configuration
 public class StudentConfig {
@@ -20,20 +19,17 @@ public class StudentConfig {
         return args -> {
             Student aydan = new Student(
                     "Aydan Jordan",
-                    14,
                     LocalDate.of(2007, JULY, 14),
                     "jordana@school.edu");
 
             Student sara = new Student(
                     "Sara De La Cruz",
-                    18,
-                    LocalDate.of(2004, DECEMBER, 2),
+                    LocalDate.of(1986, DECEMBER, 2),
                     "delacruzs@school.edu");
 
             Student peter = new Student(
                     "Peter Parker",
-                    16,
-                    LocalDate.of(2005, DECEMBER, 24),
+                    LocalDate.of(2001, AUGUST, 10),
                     "parkerp@school.edu");
 
             repository.saveAll(List.of(aydan, sara, peter));
